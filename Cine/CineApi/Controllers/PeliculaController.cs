@@ -27,11 +27,11 @@ namespace CineApi.Controllers
         }
         [HttpGet("TraerPeliculasFiltradas")]
         //[ValidateAntiForgeryToken]
-        public ActionResult Get(List<Parametro> lstParametros)
+        public ActionResult Get(int desde, int hasta)
         {
             try
             {
-                return Ok(service.ConsultarPeliculasFiltradas(lstParametros));
+                return Ok(service.ConsultarPeliculasFiltradas(desde, hasta));
             }
             catch
             {
