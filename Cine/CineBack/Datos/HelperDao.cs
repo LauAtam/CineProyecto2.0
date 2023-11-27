@@ -60,38 +60,28 @@ namespace CineBack.Datos
             }
             return salida;
         }
-        public DataTable Consultar(string nombreSP){
-
-            conexion.Open();
-            SqlCommand comando = new SqlCommand();
-            comando.Connection = conexion;
-            comando.CommandType = CommandType.StoredProcedure;
-            comando.CommandText = nombreSP;
+        public DataTable Consultar(string nombreSP)
+        {
             DataTable tabla = new DataTable();
-            tabla.Load(comando.ExecuteReader());
-            conexion.Close();
+            try
+            {
+                conexion.Open();
+                SqlCommand comando = new SqlCommand();
+                comando.Connection = conexion;
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.CommandText = nombreSP;
+                tabla.Load(comando.ExecuteReader());
+            }
+            catch
+            {
+                tabla.Clear();
+            }
+            finally
+            {
+                if (conexion != null && conexion.State == ConnectionState.Open)
+                    conexion.Close();
+            }
             return tabla;
-            //DataTable tabla = new DataTable();
-            //try
-            //{
-            //conexion.Open();
-            //SqlCommand comando = new SqlCommand();
-            //comando.Connection = conexion;
-            //comando.CommandType = CommandType.StoredProcedure;
-            //comando.CommandText = nombreSP;
-            //tabla.Load(comando.ExecuteReader());
-            //}
-            //catch
-            //{
-            //    tabla.Clear();
-            //}
-            //finally
-            //{
-            //    if (conexion != null && conexion.State == ConnectionState.Open)
-            //        conexion.Close();
-            //}
-            //return tabla;
-
         }
         public DataTable Consultar(string nombreSP, List<Parametro> lstParametros)
         {
