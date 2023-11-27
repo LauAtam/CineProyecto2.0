@@ -15,13 +15,14 @@ namespace CineBack.Datos.Implementacion
         {
           return HelperDao.ObtenerHelper().Consultar("SP_CONSULTAR_PELICULAS_DETALLES");
         }
-        //public DataTable TraerPeliculasDetalles()
-        //{
-        //    return HelperDao.ObtenerHelper().Consultar("SP_CONSULTAR_PELICULAS_DETALLES");
-        //}
-        public DataTable TraerPeliculasDesdeHasta(List<Parametro> lstparametros)
-        { 
-            return HelperDao.ObtenerHelper().Consultar("SP_CONSULTAR_PELICULAS_DESDE_HASTA", lstparametros);
+        public DataTable TraerPeliculasDesdeHasta(int desde, int hasta)
+        {
+            List<Parametro> parametros = new List<Parametro>
+            {
+                new Parametro("@desde", desde),
+                new Parametro("@hasta", hasta)
+            };
+            return HelperDao.ObtenerHelper().Consultar("SP_CONSULTAR_PELICULAS_DESDE_HASTA", parametros);
         }
     }
 }

@@ -100,54 +100,9 @@ namespace CineBack.Servicios.Implementacion
                  
         }
 
-        //public List<Pelicula> ConsultarPeliculasDetalles()
-        //{
-        //    DataTable tabla = peliculaDao.TraerPeliculas();
-        //    List<Pelicula> lista = new List<Pelicula>();
-        //    foreach (DataRow row in tabla.Rows)
-        //    {
-        //        Pelicula miObjeto = new Pelicula();
-        //        miObjeto.idPelicula = Convert.ToInt32(row["id_pelicula"]);
-        //        miObjeto.titulo = Convert.ToString(row["titulo"]);
-        //        miObjeto.duracion = (row["duracion"]);
-        //        miObjeto.fechaPublicacion = Convert.ToDateTime(row["fecha_publicacion"]);
-        //        miObjeto.genero = Convert.ToString(row["genero"]);
-        //        miObjeto.sinopsis = Convert.ToString(row["sinopsis"]);
-        //        miObjeto.Audio = Convert.ToString(row["idioma"]);
-        //        miObjeto.Subtitulos = Convert.ToString(row["subtitulos"]);
-        //        //miObjeto.idSubtitulos = Convert.ToInt32(row["subtitulos"]);
-        //        // Otros campos según tu estructura de datos
-
-
-        //    lista.Add(miObjeto);
-        //    }
-        //     return lista;
-        //}
-
-        //public List<Pelicula> ConsultarPeliculasDesdeHasta(List<Parametro> lstParametros)
-        //{
-        //    DataTable tabla = peliculaDao.TraerPeliculasDesdeHasta(lstParametros);
-        //    List<Pelicula> peliculas = new List<Pelicula>();
-        //    foreach (DataRow row in tabla.Rows)
-        //    {
-        //        Pelicula nuevaPelicula = new Pelicula();
-
-        //        nuevaPelicula.idPelicula = Convert.ToInt32(row["id_pelicula"]);
-        //        nuevaPelicula.titulo = Convert.ToString(row["titulo"]);
-        //        nuevaPelicula.fechaPublicacion = Convert.ToDateTime(row["fecha_publicacion"]);
-        //        nuevaPelicula.genero = Convert.ToString(row["genero"]);
-        //        nuevaPelicula.Audio = Convert.ToString(row["audio"]);
-        //        nuevaPelicula.Subtitulos = Convert.ToString(row["subtitulos"]);
-        //        nuevaPelicula.sinopsis = Convert.ToString(row["sinopsis"]);
-
-        //        peliculas.Add(nuevaPelicula);
-        //    }
-        //    return peliculas;
-        //}
-
-        public List<Pelicula> ConsultarPeliculasFiltradas(List<Parametro> lstParametros)
+        public List<Pelicula> ConsultarPeliculasDesdeHasta(int desde, int hasta)
         {
-            DataTable tabla = peliculaDao.TraerPeliculasDesdeHasta(lstParametros);
+            DataTable tabla = peliculaDao.TraerPeliculasDesdeHasta(desde, hasta);
             List<Pelicula> peliculas = new List<Pelicula>();
             foreach (DataRow row in tabla.Rows)
             {
