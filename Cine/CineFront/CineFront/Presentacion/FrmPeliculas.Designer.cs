@@ -40,7 +40,6 @@ namespace CineFront.Presentacion
             dtpDesde = new DateTimePicker();
             flowPanelPeliculas = new FlowLayoutPanel();
             panelDatos = new Panel();
-            btnComprar = new Button();
             btnVolver = new Button();
             panelTitulo = new Panel();
             pictureMovie = new PictureBox();
@@ -180,31 +179,12 @@ namespace CineFront.Presentacion
             // panelDatos
             // 
             panelDatos.BackColor = Color.FromArgb(220, 41, 70);
-            panelDatos.Controls.Add(btnComprar);
             panelDatos.Controls.Add(btnVolver);
             panelDatos.Dock = DockStyle.Bottom;
             panelDatos.Location = new Point(0, 661);
             panelDatos.Name = "panelDatos";
             panelDatos.Size = new Size(1006, 60);
             panelDatos.TabIndex = 27;
-            // 
-            // btnComprar
-            // 
-            btnComprar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            btnComprar.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnComprar.BackColor = Color.FromArgb(255, 68, 68);
-            btnComprar.BackgroundImageLayout = ImageLayout.Zoom;
-            btnComprar.Cursor = Cursors.Hand;
-            btnComprar.FlatAppearance.BorderColor = Color.FromArgb(255, 17, 17);
-            btnComprar.FlatAppearance.BorderSize = 0;
-            btnComprar.FlatStyle = FlatStyle.Flat;
-            btnComprar.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            btnComprar.Location = new Point(12, 10);
-            btnComprar.Name = "btnComprar";
-            btnComprar.Size = new Size(260, 40);
-            btnComprar.TabIndex = 43;
-            btnComprar.Text = "Comprar Entradas";
-            btnComprar.UseVisualStyleBackColor = false;
             // 
             // btnVolver
             // 
@@ -310,6 +290,5 @@ namespace CineFront.Presentacion
         private Button btnAplicar;
         private Label lblHasta;
         private DateTimePicker dtpHasta;
-        private Button btnComprar;
     }
 }

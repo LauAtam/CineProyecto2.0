@@ -233,6 +233,7 @@ namespace CineFront.Presentacion
             string data = JsonConvert.SerializeObject(nuevaVenta);
             ProximaVentaAsync();
             dgvDetalles.Rows.Clear();
+            txtPrecio.Text = string.Empty;
             string result = await ClienteSingleton.getInstance().PostAsync(url, data);
             if (result == string.Empty)
             {
