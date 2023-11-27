@@ -100,7 +100,7 @@ namespace CineBack.Servicios.Implementacion
                  
         }
 
-        public List<Pelicula> ConsultarPeliculasDesdeHasta(int desde, int hasta)
+        public List<Pelicula> ConsultarPeliculasFiltradas(int desde, int hasta)
         {
             DataTable tabla = peliculaDao.TraerPeliculasDesdeHasta(desde, hasta);
             List<Pelicula> peliculas = new List<Pelicula>();
@@ -120,5 +120,6 @@ namespace CineBack.Servicios.Implementacion
             }
             return peliculas;
         }
+    }
     }
 }

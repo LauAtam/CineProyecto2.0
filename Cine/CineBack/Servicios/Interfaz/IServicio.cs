@@ -31,7 +31,7 @@ namespace CineBack.Servicios.Interfaz
 
         List<Pelicula> ConsultarPeliculas();
         //List<Pelicula> ConsultarPeliculasDetalles();
-        List<Pelicula> ConsultarPeliculasFiltradas(List<Parametro> lstParametros);
+        List<Pelicula> ConsultarPeliculasFiltradas(int desde, int hasta);
 
     }
 }

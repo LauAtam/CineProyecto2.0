@@ -103,7 +103,7 @@
             btnClientes.FlatAppearance.BorderSize = 0;
             btnClientes.FlatStyle = FlatStyle.Flat;
             btnClientes.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            btnClientes.Location = new Point(0, 304);
+            btnClientes.Location = new Point(0, 307);
             btnClientes.Name = "btnClientes";
             btnClientes.Size = new Size(196, 37);
             btnClientes.TabIndex = 9;
@@ -121,7 +121,7 @@
             btnMasVistas.FlatAppearance.BorderSize = 0;
             btnMasVistas.FlatStyle = FlatStyle.Flat;
             btnMasVistas.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            btnMasVistas.Location = new Point(0, 267);
+            btnMasVistas.Location = new Point(0, 270);
             btnMasVistas.Name = "btnMasVistas";
             btnMasVistas.Size = new Size(196, 37);
             btnMasVistas.TabIndex = 8;
@@ -139,7 +139,7 @@
             btnVenderEntrada.FlatAppearance.BorderSize = 0;
             btnVenderEntrada.FlatStyle = FlatStyle.Flat;
             btnVenderEntrada.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            btnVenderEntrada.Location = new Point(0, 230);
+            btnVenderEntrada.Location = new Point(0, 233);
             btnVenderEntrada.Name = "btnVenderEntrada";
             btnVenderEntrada.Size = new Size(196, 37);
             btnVenderEntrada.TabIndex = 7;
@@ -157,7 +157,7 @@
             btnPelículas.FlatAppearance.BorderSize = 0;
             btnPelículas.FlatStyle = FlatStyle.Flat;
             btnPelículas.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            btnPelículas.Location = new Point(0, 193);
+            btnPelículas.Location = new Point(0, 196);
             btnPelículas.Name = "btnPelículas";
             btnPelículas.Size = new Size(196, 37);
             btnPelículas.TabIndex = 5;

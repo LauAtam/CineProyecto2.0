@@ -240,14 +240,15 @@ namespace CineFront.Presentacion
         private async void btnEnviar_Click(object sender, EventArgs e)
         {
             nuevaVenta.fecha = dtpFecha.Value;
-            nuevaVenta.idPelicula = cboPelicula.SelectedIndex;
-            nuevaVenta.idFormaPago = cboFormaPago.SelectedIndex;
-            nuevaVenta.idCliente = cboCliente.SelectedIndex;
+            nuevaVenta.idPelicula = ((Pelicula)cboPelicula.SelectedItem).idPelicula;
+            nuevaVenta.idFormaPago = ((FormaPago)cboFormaPago.SelectedItem).id_forma_pago;
+            nuevaVenta.idCliente = ((Cliente)cboCliente.SelectedItem).idCliente;
 
             string url = "https://localhost:7211/api/Venta/InsertarVenta";
             string data = JsonConvert.SerializeObject(nuevaVenta);
             await ClienteSingleton.getInstance().PostAsync(url, data);
             ProximaVentaAsync();
+            dgvDetalles.Rows.Clear();
         }
         #endregion
         //private void btnEnviar_Click(object sender, EventArgs e)

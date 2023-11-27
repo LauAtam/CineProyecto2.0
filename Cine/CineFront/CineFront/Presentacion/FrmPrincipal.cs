@@ -110,48 +110,44 @@ namespace CineFront.Presentacion
 
         #endregion
 
+        #region botones
+        private void btnPelículas_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario1<FrmPeliculas>();
+        }
         private void btnVenderEntrada_Click(object sender, EventArgs e)
         {
-            AbrirFormulario<FrmVenta>();
+            AbrirFormulario1<FrmVenta>();
+
         }
         private void btnMasVistas_Click(object sender, EventArgs e)
         {
-            AbrirFormulario<FrmMasVistas>();
-
-        }
-
-        private void btnPelículas_Click(object sender, EventArgs e)
-        {
-            AbrirFormulario<FrmPeliculas>();
-        }
-
-        private void btnVenderEntrada2_Click(object sender, EventArgs e)
-        {
-            AbrirFormulario<FrmVenta>();
+            AbrirFormulario1<FrmMasVistas>();
         }
 
         private void btnClientes_Click(object sender, EventArgs e)
         {
-            AbrirFormulario<FrmClientes>();
+            AbrirFormulario1<FrmClientes>();
         }
-
-        //Metodo para abrir formulario dentro del panel contenedor de formularios
-        private void AbrirFormulario<MiForm>() where MiForm : Form, new()
+        #endregion
+        //Metodo para abrir un solo formulario dentro del panel contenedor de formularios
+        private void AbrirFormulario1<FormActual>() where FormActual : Form, new()
         {
-            Form formulario;
-            formulario = panelFormularios.Controls.OfType<MiForm>().FirstOrDefault(); //busca el formulario en la coleccion
-            //si el formulario no existe
-            if (formulario == null)
+            if (!(panelFormularios.Controls.Count == 1 && panelFormularios.Controls[0] is FormActual))
             {
-                formulario = new MiForm();
+                foreach (Control control in panelFormularios.Controls.OfType<Form>().ToList())
+                {
+                    control.Dispose();
+                }
+                Form formulario = new FormActual();
                 formulario.TopLevel = false;
                 formulario.FormBorderStyle = FormBorderStyle.None;
                 formulario.Dock = DockStyle.Fill;
                 panelFormularios.Controls.Add(formulario);
                 panelFormularios.Tag = formulario;
                 formulario.Show();
+                formulario.BringToFront();
             }
-            formulario.BringToFront();
         }
     }
 }
