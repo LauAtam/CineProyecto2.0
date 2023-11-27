@@ -40,7 +40,6 @@
             ColColumnaButaca = new DataGridViewTextBoxColumn();
             ColDescuento = new DataGridViewTextBoxColumn();
             ColPrecio = new DataGridViewTextBoxColumn();
-            ColQuitar = new DataGridViewButtonColumn();
             btnAgregar = new Button();
             txtDescuento = new TextBox();
             lblDescuento = new Label();
@@ -58,6 +57,7 @@
             pictureTickets = new PictureBox();
             pictureBoletería = new PictureBox();
             lblTitulo = new Label();
+            ColQuitar = new DataGridViewButtonColumn();
             panelContenedor.SuspendLayout();
             panelDatos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvDetalles).BeginInit();
@@ -171,14 +171,15 @@
             dgvDetalles.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvDetalles.Columns.AddRange(new DataGridViewColumn[] { ColCliente, ColFilaButaca, ColColumnaButaca, ColDescuento, ColPrecio, ColQuitar });
             dgvDetalles.GridColor = SystemColors.MenuText;
-            dgvDetalles.Location = new Point(49, 287);
+            dgvDetalles.Location = new Point(72, 287);
             dgvDetalles.Margin = new Padding(3, 2, 3, 2);
             dgvDetalles.Name = "dgvDetalles";
             dgvDetalles.ReadOnly = true;
             dgvDetalles.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             dgvDetalles.RowTemplate.Height = 29;
-            dgvDetalles.Size = new Size(908, 166);
+            dgvDetalles.Size = new Size(863, 166);
             dgvDetalles.TabIndex = 36;
+            dgvDetalles.CellContentClick += dgvDetalles_CellContentClick_1;
             // 
             // ColCliente
             // 
@@ -219,14 +220,6 @@
             ColPrecio.Name = "ColPrecio";
             ColPrecio.ReadOnly = true;
             ColPrecio.Width = 150;
-            // 
-            // ColQuitar
-            // 
-            ColQuitar.HeaderText = "Quitar";
-            ColQuitar.MinimumWidth = 6;
-            ColQuitar.Name = "ColQuitar";
-            ColQuitar.ReadOnly = true;
-            ColQuitar.Width = 140;
             // 
             // btnAgregar
             // 
@@ -441,6 +434,12 @@
             lblTitulo.Size = new Size(271, 47);
             lblTitulo.TabIndex = 3;
             lblTitulo.Text = "Carga de Venta";
+            // 
+            // ColQuitar
+            // 
+            ColQuitar.HeaderText = "Quitar";
+            ColQuitar.Name = "ColQuitar";
+            ColQuitar.ReadOnly = true;
             // 
             // FrmVenta
             // 

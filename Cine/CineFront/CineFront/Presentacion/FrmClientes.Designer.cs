@@ -33,13 +33,6 @@
             lblTitulo = new Label();
             panel1 = new Panel();
             dgvClientes = new DataGridView();
-            ColID = new DataGridViewTextBoxColumn();
-            ColNombre = new DataGridViewTextBoxColumn();
-            ColApellido = new DataGridViewTextBoxColumn();
-            ColTelefono = new DataGridViewTextBoxColumn();
-            ColNacimiento = new DataGridViewTextBoxColumn();
-            ColQuitar = new DataGridViewButtonColumn();
-            ColModificar = new DataGridViewButtonColumn();
             dataGridView1 = new DataGridView();
             panelDatos = new Panel();
             dtpClienteNacimiento = new DateTimePicker();
@@ -128,7 +121,6 @@
             dgvClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvClientes.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
             dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvClientes.Columns.AddRange(new DataGridViewColumn[] { ColID, ColNombre, ColApellido, ColTelefono, ColNacimiento, ColQuitar, ColModificar });
             dgvClientes.Dock = DockStyle.Fill;
             dgvClientes.Location = new Point(344, 0);
             dgvClientes.Margin = new Padding(3, 2, 3, 2);
@@ -138,49 +130,6 @@
             dgvClientes.Size = new Size(763, 503);
             dgvClientes.TabIndex = 66;
             dgvClientes.CellContentClick += dgvClientes_CellContentClick;
-            // 
-            // ColID
-            // 
-            ColID.HeaderText = "ID";
-            ColID.MinimumWidth = 6;
-            ColID.Name = "ColID";
-            ColID.Visible = false;
-            // 
-            // ColNombre
-            // 
-            ColNombre.HeaderText = "Nombre";
-            ColNombre.MinimumWidth = 6;
-            ColNombre.Name = "ColNombre";
-            // 
-            // ColApellido
-            // 
-            ColApellido.HeaderText = "Apellido";
-            ColApellido.MinimumWidth = 6;
-            ColApellido.Name = "ColApellido";
-            // 
-            // ColTelefono
-            // 
-            ColTelefono.HeaderText = "Telefono";
-            ColTelefono.MinimumWidth = 6;
-            ColTelefono.Name = "ColTelefono";
-            // 
-            // ColNacimiento
-            // 
-            ColNacimiento.HeaderText = "Nacimiento";
-            ColNacimiento.MinimumWidth = 6;
-            ColNacimiento.Name = "ColNacimiento";
-            // 
-            // ColQuitar
-            // 
-            ColQuitar.HeaderText = "Quitar";
-            ColQuitar.MinimumWidth = 6;
-            ColQuitar.Name = "ColQuitar";
-            // 
-            // ColModificar
-            // 
-            ColModificar.HeaderText = "Modificar";
-            ColModificar.MinimumWidth = 6;
-            ColModificar.Name = "ColModificar";
             // 
             // dataGridView1
             // 
@@ -391,12 +340,5 @@
         private PictureBox pictureClienteM;
         private Button btnVolver;
         private DataGridView dgvClientes;
-        private DataGridViewTextBoxColumn ColID;
-        private DataGridViewTextBoxColumn ColNombre;
-        private DataGridViewTextBoxColumn ColApellido;
-        private DataGridViewTextBoxColumn ColTelefono;
-        private DataGridViewTextBoxColumn ColNacimiento;
-        private DataGridViewButtonColumn ColQuitar;
-        private DataGridViewButtonColumn ColModificar;
     }
 }

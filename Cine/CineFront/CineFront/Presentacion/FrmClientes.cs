@@ -91,7 +91,15 @@ namespace CineFront.Presentacion
                 c.telefono = mTxtClienteTel.Text;
                 c.fechaNac = dtpClienteNacimiento.Value;
                 data = JsonConvert.SerializeObject(c);
-                await ClienteSingleton.getInstance().PostAsync(url, data);
+                string result = await ClienteSingleton.getInstance().PostAsync(url, data);
+                if (result == string.Empty)
+                {
+                    MessageBox.Show("Se realizaron los cambios", "Informe", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    MessageBox.Show("No se pudieron realizar los cambios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
             }
             MostrarClientes();
         }
@@ -104,13 +112,22 @@ namespace CineFront.Presentacion
 
                 string url = "https://localhost:7211/api/Cliente/DeleteClient?id=" + Convert.ToString(id);
                 string data = JsonConvert.SerializeObject(id);
-                await ClienteSingleton.getInstance().DeleteAsync(url, data);
+                string result = await ClienteSingleton.getInstance().DeleteAsync(url, data);
+                if (result == string.Empty)
+                {
+                    MessageBox.Show("Se realizaron los cambios", "Informe", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    MessageBox.Show("No se pudieron realizar los cambios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
             }
             if (e.ColumnIndex == colModificar.Index)
             {
                 if (validar())
                 {
                     Cliente cliente = new Cliente();
+                    cliente.idCliente = Convert.ToInt32(dgvClientes.CurrentRow.Cells["idCliente"].Value);
                     cliente.nombre = txtClienteNombre.Text;
                     cliente.apellido = txtClienteApellido.Text;
                     cliente.telefono = mTxtClienteTel.Text;
@@ -119,7 +136,15 @@ namespace CineFront.Presentacion
 
                     string url = "https://localhost:7211/api/Cliente/ActualizarClientes";
                     string data = JsonConvert.SerializeObject(cliente);
-                    await ClienteSingleton.getInstance().PutAsync(url, data);
+                    string result = await ClienteSingleton.getInstance().PutAsync(url, data);
+                    if (result == string.Empty)
+                    {
+                        MessageBox.Show("Se realizaron los cambios", "Informe", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudieron realizar los cambios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
                 }
             }
             MostrarClientes();

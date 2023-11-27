@@ -30,42 +30,23 @@ namespace CineFront.ClienteHttp
 
         public async Task<string> GetAsync(string url)
         {
-            //var result = await cliente.GetAsync(url);
-            //var content = "";
-            //if (result.IsSuccessStatusCode)
-            //    content = await result.Content.ReadAsStringAsync();
-            //return content;
-            try
-            {
-                // Hacer la solicitud GET
-                HttpResponseMessage response = await cliente.GetAsync(url);
-
-                // Verificar si la solicitud fue exitosa (código de estado 200)
-                if (response.IsSuccessStatusCode)
-                {
-                    // Leer y procesar el contenido de la respuesta
-                    string content = await response.Content.ReadAsStringAsync();
-                    return content;
-                }
-                else
-                {
-                    return $"Error en la solicitud. Código de estado: {response.StatusCode}";
-                    //Console.WriteLine($"Error en la solicitud. Código de estado: {response.StatusCode}");
-                }
-            }
-            catch (HttpRequestException e)
-            {
-                return $"Error de solicitud HTTP: {e.Message}";
-            }
+            var result = await cliente.GetAsync(url);
+            var content = "";
+            if (result.IsSuccessStatusCode)
+                content = await result.Content.ReadAsStringAsync();
+            return content;
         }
         public async Task<string> PostAsync(string url, string data)
         {
             StringContent content = new StringContent(data, Encoding.UTF8,
             "application/json");
             var result = await cliente.PostAsync(url, content);
-            var response = "";
+            var response = string.Empty;
             if (result.IsSuccessStatusCode)
+            {
                 response = await result.Content.ReadAsStringAsync();
+                return response;
+            }
             return response;
         }
         public async Task<string> PutAsync(string url, string data)
@@ -73,9 +54,12 @@ namespace CineFront.ClienteHttp
             StringContent content = new StringContent(data, Encoding.UTF8,
             "application/json");
             var result = await cliente.PutAsync(url, content);
-            var response = "";
+            var response = string.Empty;
             if (result.IsSuccessStatusCode)
+            {
                 response = await result.Content.ReadAsStringAsync();
+                return response;
+            }
             return response;
         }
 
@@ -83,10 +67,11 @@ namespace CineFront.ClienteHttp
         {
             //StringContent content = new StringContent(data,Encoding)
             var result = await cliente.DeleteAsync(url);
-            var response = "";
+            var response = string.Empty;
             if (result.IsSuccessStatusCode)
             {
                 response = await result.Content.ReadAsStringAsync();
+                return response;
             }
 
             //JsonConvert.SerializeObject();

@@ -23,7 +23,6 @@ namespace CineFront.Presentacion
         List<FormaPago> FormaPagoList;
         List<Pelicula> peliculaList;
         List<Cliente> Clienteslst;
-
         Venta nuevaVenta;
         HelperDao helper;
         DetalleVenta det;
@@ -70,7 +69,7 @@ namespace CineFront.Presentacion
             if (next > 0)
                 lblventa.Text = "Venta Nro: " + next.ToString();
             else
-                MessageBox.Show("Error de datos. No se puede obtener Nº de presupuesto!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error de datos. No se puede obtener Nº de venta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
         }
 
@@ -177,7 +176,7 @@ namespace CineFront.Presentacion
                 MessageBox.Show("La butaca ya fue seleccionada!!!", "Control", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            if (!int.TryParse(txtDescuento.Text, out _))
+            if (!int.TryParse(txtDescuento.Text, out _) || Convert.ToInt32(txtDescuento.Text) > 100)
             {
                 MessageBox.Show("Debe ingresar un descuento válido...", "Control", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
@@ -222,20 +221,6 @@ namespace CineFront.Presentacion
             }
             return false;
         }
-        private void dgvDetalles_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == 5)
-            {
-                double precio = Convert.ToDouble(txtPrecio.Text);
-                double precioDetEliminado = Convert.ToDouble(dgvDetalles.CurrentRow.Cells[4].Value);
-                txtPrecio.Text = Convert.ToString(precio - precioDetEliminado);
-
-                int rowIndex = dgvDetalles.CurrentRow.Index;
-                nuevaVenta.QuitarDetalle(rowIndex);
-
-                dgvDetalles.Rows.Remove(dgvDetalles.CurrentRow);
-            }
-        }
 
         private async void btnEnviar_Click(object sender, EventArgs e)
         {
@@ -246,26 +231,38 @@ namespace CineFront.Presentacion
 
             string url = "https://localhost:7211/api/Venta/InsertarVenta";
             string data = JsonConvert.SerializeObject(nuevaVenta);
-            await ClienteSingleton.getInstance().PostAsync(url, data);
             ProximaVentaAsync();
             dgvDetalles.Rows.Clear();
+            string result = await ClienteSingleton.getInstance().PostAsync(url, data);
+            if (result == string.Empty)
+            {
+                MessageBox.Show("Se realizaron los cambios", "Informe", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("No se pudieron realizar los cambios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
         #endregion
-        //private void btnEnviar_Click(object sender, EventArgs e)
-        //{
-        //    nueva.fecha = dtpFecha.Value;
-        //    nueva.idFormaPago = cboPago.SelectedIndex;
-        //    nueva.idCliente = cboCliente.SelectedIndex;
 
-        //    if (aplicacion.InsertarVenta(nueva))
-        //    {
-        //        MessageBox.Show("Se registró con éxito la venta...", "Informe", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-        //        this.Dispose();
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("NO se pudo registrar la venta...", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-        //    }
-        //}
+        private void dgvDetalles_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                double precio = Convert.ToDouble(txtPrecio.Text);
+                double precioDetEliminado = Convert.ToDouble(dgvDetalles.CurrentRow.Cells[4].Value);
+                txtPrecio.Text = Convert.ToString(precio - precioDetEliminado);
+                if (e.ColumnIndex == e.ColumnIndex)
+                {
+                    nuevaVenta.QuitarDetalle(dgvDetalles.CurrentRow.Index);
+                    dgvDetalles.Rows.Remove(dgvDetalles.CurrentRow);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error:" + ex.Message);
+                Console.WriteLine("Error:" + ex.StackTrace);
+            }
+        }
     }
 }

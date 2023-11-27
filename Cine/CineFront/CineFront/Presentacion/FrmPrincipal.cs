@@ -16,10 +16,10 @@ namespace CineFront.Presentacion
         public FrmPrincipal()
         {
             InitializeComponent();
+            AbrirFormulario1<FrmPeliculas>();
         }
         public void FrmPrincipal_Load(object sender, EventArgs e)
         {
-
         }
 
         #region Funcionalidades del fromulario

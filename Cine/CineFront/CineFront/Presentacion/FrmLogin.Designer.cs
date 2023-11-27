@@ -44,7 +44,7 @@
             btnLogin.Location = new Point(325, 269);
             btnLogin.Margin = new Padding(3, 2, 3, 2);
             btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(102, 30);
+            btnLogin.Size = new Size(96, 43);
             btnLogin.TabIndex = 0;
             btnLogin.Text = "Ingresar";
             btnLogin.UseVisualStyleBackColor = true;
@@ -62,7 +62,7 @@
             // 
             // txtUsuario
             // 
-            txtUsuario.BackColor = SystemColors.InactiveCaption;
+            txtUsuario.BackColor = SystemColors.InactiveBorder;
             txtUsuario.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             txtUsuario.Location = new Point(413, 146);
             txtUsuario.Margin = new Padding(3, 2, 3, 2);
@@ -72,7 +72,7 @@
             // 
             // txtContraseña
             // 
-            txtContraseña.BackColor = SystemColors.InactiveCaption;
+            txtContraseña.BackColor = SystemColors.InactiveBorder;
             txtContraseña.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             txtContraseña.Location = new Point(413, 195);
             txtContraseña.Margin = new Padding(3, 2, 3, 2);
@@ -116,7 +116,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ActiveCaption;
+            BackColor = Color.IndianRed;
             ClientSize = new Size(766, 387);
             Controls.Add(pictureBox1);
             Controls.Add(label3);
