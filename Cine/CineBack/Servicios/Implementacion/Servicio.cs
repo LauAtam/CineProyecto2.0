@@ -121,5 +121,4 @@ namespace CineBack.Servicios.Implementacion
             return peliculas;
         }
     }
-    }
 }
